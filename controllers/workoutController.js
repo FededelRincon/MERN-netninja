@@ -80,7 +80,7 @@ const updateWorkout = async (req, res) => {
         return res.status(404).json({error: 'No valid id'})
     }
 
-    const workout = await Workout.findOneAndUpdate({ _id: id }, { ...req.body });   //el modelo se encarga de filtrar si vienen datos extras
+    const workout = await Workout.findOneAndUpdate({ _id: id }, { ...req.body }, {returnOriginal: false});   //el modelo se encarga de filtrar si vienen datos extras
 
     if( !workout) {
         return res.status(404).json({error: 'No such workout'})
